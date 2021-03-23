@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject bulletToFire;
     public Transform firePoint;
-
+    public SpriteRenderer bodySR;
     private void Awake()
     {
         playerInstance = this;

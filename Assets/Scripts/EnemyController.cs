@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public GameObject[] deathSplatter;
     public GameObject hitEffect;
     public Animator anim;
+    private float hitEffectduration = 0.1f;
     
     //default health
     public int health = 150;
@@ -84,10 +85,24 @@ public class EnemyController : MonoBehaviour
                     Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                 }
             }
+
+            //hit effect
+            if(body.color.g == 0)
+            {
+                hitEffectduration -= Time.deltaTime;
+                if(hitEffectduration <= 0)
+                {
+                    //color become normal
+                    body.color = new Color(1, 1, 1, 1);
+                    hitEffectduration = 0.1f;
+                }
+            }
         }
     }
     public void DamageEnemy(int points)
     {
+        //when hit, enemy turn red
+        body.color = new Color(1, 0, 0, 1);
         Instantiate(hitEffect, transform.position, transform.rotation);
         health -= points;
         if(health <= 0)
