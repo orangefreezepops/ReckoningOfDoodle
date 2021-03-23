@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController playerInstance;
+
     public float moveSpeed;
     private Vector2 moveInput;
-
     public Rigidbody2D RB;
     public Transform gunArm;
     private Camera theCam;
     public Animator anim;
     public GameObject bulletToFire;
     public Transform firePoint;
+
+    private void Awake()
+    {
+        playerInstance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +33,9 @@ public class PlayerController : MonoBehaviour
 
         //control movement
         //transform.position += new Vector3(moveInput.x*Time.deltaTime*moveSpeed, moveInput.y * Time.deltaTime*moveSpeed, 0f);
+        moveInput.Normalize();
         RB.velocity = moveInput * moveSpeed;
 
-        moveInput.Normalize();
         //control Aim
         Vector3 mousePos = Input.mousePosition;
         Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);

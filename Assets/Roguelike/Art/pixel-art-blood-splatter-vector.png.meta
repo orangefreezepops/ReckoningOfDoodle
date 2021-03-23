@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: cca0d4ed10aef9a40b812619ce727c6a
+guid: b703f547d4544d540aac6a15a278103b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3162336433277574538
-    second: Character0
+      213: -2357404579355477623
+    second: blood_splatter
   - first:
-      213: -2175339132055221483
-    second: Enemy_0
+      213: 2168258693563232378
+    second: blood_splatter_1
   - first:
-      213: -6517870645779676952
-    second: enemy_bullet_0
+      213: 5317792255083787886
+    second: blood_splatter_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +70,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,7 +82,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -94,7 +94,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 256
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -108,13 +108,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character0
+      name: blood_splatter
       rect:
         serializedVersion: 2
-        x: 67
-        y: 112
-        width: 10
-        height: 15
+        x: 375
+        y: 253
+        width: 113
+        height: 75
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,20 +122,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 672e63ac4cf1d14d0800000000000000
-      internalID: -3162336433277574538
+      spriteID: 98933af6601d84fd0800000000000000
+      internalID: -2357404579355477623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_0
+      name: blood_splatter_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 64
-        width: 12
-        height: 13
+        x: 210
+        y: 253
+        width: 101
+        height: 73
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51b87d7b594afc1e0800000000000000
-      internalID: -2175339132055221483
+      spriteID: a703dfa3bc3371e10800000000000000
+      internalID: 2168258693563232378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_bullet_0
+      name: blood_splatter_2
       rect:
         serializedVersion: 2
-        x: 123
-        y: 114
-        width: 4
-        height: 4
+        x: 16
+        y: 256
+        width: 106
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e04b5a4e2fdb85a0800000000000000
-      internalID: -6517870645779676952
+      spriteID: e66b79191e79cc940800000000000000
+      internalID: 5317792255083787886
       vertices: []
       indices: 
       edges: []
