@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Rigidbody2D RB;
-    public float moveSpeed;
-    public float rangeToChase;
+    public float moveSpeed = 3f;
+    public float rangeToChase = 5f;
     protected Vector3 moveDirection;
 
     //death&hit effects
@@ -23,8 +23,8 @@ public class EnemyController : MonoBehaviour
 
     public GameObject bullet;
     public Transform firePoint;
-    public float fireRate;
-    public float rangeToFire;
+    public float fireRate = 0.3f;
+    public float rangeToFire = 4f;
     protected float fireCounter;
 
     //the image of the enemy
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
             hitBodyEffect();
         }
     }
-    protected void shoot()
+    protected virtual void shoot()
     {
         fireCounter -= Time.deltaTime;
         if (fireCounter <= 0)

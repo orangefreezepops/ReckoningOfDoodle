@@ -9,7 +9,7 @@ public class cowardEnemy : EnemyController
     // Start is called before the first frame update
     void Start()
     {
-        shouldShoot = false;
+        shouldShoot = true;
         shouldChase = false;
     }
 
@@ -52,7 +52,32 @@ public class cowardEnemy : EnemyController
                 anim.SetBool("isMoving", false);
             }
 
+            //shoot
+            if (shouldShoot && Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToFire)
+            {
+                shoot();
+            }
+
             hitBodyEffect();
+        }
+    }
+
+
+    protected override void shoot()
+    {
+        fireCounter -= Time.deltaTime;
+        if (fireCounter <= 0)
+        {
+            fireCounter = fireRate;
+            Vector2 firePointPosition = firePoint.transform.position;
+            Vector2 bulletPosition = new Vector2(firePointPosition.x - 1, firePointPosition.y);
+            Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
+            bulletPosition = new Vector2(firePointPosition.x + 1, firePointPosition.y);
+            Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
+            bulletPosition = new Vector2(firePointPosition.x, firePointPosition.y-1);
+            Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
+            bulletPosition = new Vector2(firePointPosition.x, firePointPosition.y + 1);
+            Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
         }
     }
 }

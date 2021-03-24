@@ -223,7 +223,7 @@ MonoBehaviour:
   bullet: {fileID: 1588158598281684511, guid: 8cfa35aa4a94ea74a8ee11cd3b58f963, type: 3}
   firePoint: {fileID: 1758940118}
   fireRate: 0.5
-  rangeToFire: 3
+  rangeToFire: 4
   body: {fileID: 8330888398731460165}
 --- !u!95 &8330888400043329995
 Animator:
