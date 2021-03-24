@@ -7,23 +7,25 @@ public class EnemyController : MonoBehaviour
     public Rigidbody2D RB;
     public float moveSpeed;
     public float rangeToChase;
-    private Vector3 moveDirection;
+    protected Vector3 moveDirection;
 
     //death&hit effects
     public GameObject[] deathSplatter;
     public GameObject hitEffect;
     public Animator anim;
-    private float hitEffectduration = 0.1f;
+    protected float hitEffectduration = 0.1f;
     
     //default health
     public int health = 150;
 
-    public bool shouldShoot; // this determine whether a type of enemy will shoot player
+    public bool shouldChase;
+    public bool shouldShoot; 
+
     public GameObject bullet;
     public Transform firePoint;
     public float fireRate;
     public float rangeToFire;
-    private float fireCounter;
+    protected float fireCounter;
 
     //the image of the enemy
     public SpriteRenderer body;
@@ -40,7 +42,7 @@ public class EnemyController : MonoBehaviour
         if(body.isVisible)
         {
             //chase player
-            if (Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToChase)
+            if (shouldChase && Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToChase)
             {
                 moveDirection = PlayerController.playerInstance.transform.position - transform.position;
             }
@@ -78,27 +80,36 @@ public class EnemyController : MonoBehaviour
 
             if (shouldShoot && Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToFire)
             {
-                fireCounter -= Time.deltaTime;
-                if (fireCounter <= 0)
-                {
-                    fireCounter = fireRate;
-                    Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                }
+                shoot();
             }
 
-            //hit effect
-            if(body.color.g == 0)
+            hitBodyEffect();
+        }
+    }
+    protected void shoot()
+    {
+        fireCounter -= Time.deltaTime;
+        if (fireCounter <= 0)
+        {
+            fireCounter = fireRate;
+            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        }
+    }
+    public void hitBodyEffect()
+    {
+        //hit effect
+        if (body.color.g == 0)
+        {
+            hitEffectduration -= Time.deltaTime;
+            if (hitEffectduration <= 0)
             {
-                hitEffectduration -= Time.deltaTime;
-                if(hitEffectduration <= 0)
-                {
-                    //color become normal
-                    body.color = new Color(1, 1, 1, 1);
-                    hitEffectduration = 0.1f;
-                }
+                //color become normal
+                body.color = new Color(1, 1, 1, 1);
+                hitEffectduration = 0.1f;
             }
         }
     }
+
     public void DamageEnemy(int points)
     {
         //when hit, enemy turn red
@@ -111,6 +122,7 @@ public class EnemyController : MonoBehaviour
             Vector3 offset = new Vector3(0f, 0.5f, 0f);
             int random = Random.Range(0,2);
             int randomR = Random.Range(0, 1);
+            //instanitate blood splatter
             Instantiate(deathSplatter[random], transform.position-offset, Quaternion.Euler(0f,0f,randomR*180));
         }
     }

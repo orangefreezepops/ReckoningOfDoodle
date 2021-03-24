@@ -7,6 +7,12 @@ public class PlayerController : MonoBehaviour
     public static PlayerController playerInstance;
 
     public float moveSpeed;
+    private float activeMoveSpeed;//this move speed change when dash
+    public float dashSpeed = 10f;
+    public float dashDuration = 0.3f;
+    public float dashCooldown = 1f;
+    private float dashCounter, dashCooldownCounter;
+
     private Vector2 moveInput;
     public Rigidbody2D RB;
     public Transform gunArm;
@@ -23,6 +29,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         theCam = Camera.main;
+        activeMoveSpeed = moveSpeed;
+        dashCooldownCounter = -1;
     }
 
     // Update is called once per frame
@@ -34,7 +42,7 @@ public class PlayerController : MonoBehaviour
         //control movement
         //transform.position += new Vector3(moveInput.x*Time.deltaTime*moveSpeed, moveInput.y * Time.deltaTime*moveSpeed, 0f);
         moveInput.Normalize();
-        RB.velocity = moveInput * moveSpeed;
+        RB.velocity = moveInput * activeMoveSpeed;
 
         //control Aim
         Vector3 mousePos = Input.mousePosition;
@@ -69,5 +77,39 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isMoving", false);
         }
+
+        //control dash
+
+        if (Input.GetKeyDown(KeyCode.Space) && dashCooldownCounter == -1)
+        {
+            activeMoveSpeed = dashSpeed;
+            dashCounter = dashDuration;
+            anim.SetTrigger("dash");
+            HealthController.Instance.setDashInvinc(dashDuration);
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashCooldownCounter = dashCooldown;
+            }
+        }
+
+        if (dashCooldownCounter > 0)
+        {
+            dashCooldownCounter -= Time.deltaTime;
+            if(dashCooldownCounter <= 0)
+            {
+                dashCooldownCounter = -1;
+            }
+        }
+
+
+
+
+
     }
 }

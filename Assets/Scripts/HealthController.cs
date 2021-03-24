@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
 
     private float damageInvinc = 1f;
     private float invincCount;
+    private bool hit = false;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(invincCount > 0)
+        //if hit flag is true, player is hit and enter invinc
+        if(invincCount > 0 && hit == true)
         {
             invincCount -= Time.deltaTime;
 
@@ -47,14 +49,33 @@ public class HealthController : MonoBehaviour
             {
                 //change player alpha value to 1
                 PlayerController.playerInstance.bodySR.color = new Color(1,1,1,1f);
+                hit = false;
             }
         }
+        //player dash
+        else if(invincCount > 0)
+        {
+            invincCount -= Time.deltaTime;
+
+            PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 0.5f);
+            if (invincCount <= 0)
+            {
+                //change player alpha value to 1
+                PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 1f);
+            }
+        }
+    }
+    public void setDashInvinc(float duration)
+    {
+        invincCount = duration;
+        
     }
 
     public void DamagePlayer()
     {
         if(invincCount <= 0)
         {
+            hit = true;
             currentHealth--;
             //change player alpha value to 0.5
             PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);

@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -6517870645779676952
     second: enemy_bullet_0
+  - first:
+      213: -2920302936249799813
+    second: Enemy_coward
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,7 +161,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,6 +169,27 @@ TextureImporter:
       bones: []
       spriteID: 8e04b5a4e2fdb85a0800000000000000
       internalID: -6517870645779676952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_coward
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 96
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bec40b3fff877d0800000000000000
+      internalID: -2920302936249799813
       vertices: []
       indices: 
       edges: []

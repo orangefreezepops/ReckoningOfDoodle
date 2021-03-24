@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8330888398731460167}
-  m_LocalRotation: {x: -0, y: -0, z: 0.07134884, w: 0.9974515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.31, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8330888400043329994}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.183001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8330888398731460165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
     type: 3}
   anim: {fileID: 8330888400043329995}
   health: 150
+  shouldChase: 1
   shouldShoot: 1
   bullet: {fileID: 1588158598281684511, guid: 8cfa35aa4a94ea74a8ee11cd3b58f963, type: 3}
   firePoint: {fileID: 1758940118}
