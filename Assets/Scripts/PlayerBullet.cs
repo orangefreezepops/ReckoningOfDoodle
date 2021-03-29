@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour
         RB.velocity = transform.right*speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
@@ -31,7 +31,7 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
