@@ -107,11 +107,11 @@ MonoBehaviour:
   anim: {fileID: 6785483170603778316}
   health: 150
   shouldChase: 0
-  shouldShoot: 0
-  bullet: {fileID: 0}
-  firePoint: {fileID: 0}
-  fireRate: 0
-  rangeToFire: 0
+  shouldShoot: 1
+  bullet: {fileID: 1588158598281684511, guid: 8cfa35aa4a94ea74a8ee11cd3b58f963, type: 3}
+  firePoint: {fileID: 6785483170663610319}
+  fireRate: 1.5
+  rangeToFire: 5
   body: {fileID: 6785483172161538287}
   rangeToRun: 3.5
   shouldRun: 1
@@ -158,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6785483170663610316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27, y: -0.24, z: -2.3554397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6785483170603778317}
