@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public float speed;
-    private Vector3 direction;
+    protected Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,12 @@ public class EnemyBullet : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void setDirection(Vector3 direction)
+    {
+        this.direction = direction;
+    }
+
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
@@ -31,7 +36,7 @@ public class EnemyBullet : MonoBehaviour
         Destroy(gameObject);
 
     }
-    private void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

@@ -88,11 +88,15 @@ public class EnemyController : MonoBehaviour
     }
     protected virtual void shoot()
     {
+        GameObject bullet0;
+        //Vector3 vector = new Vector3(1, 1, 1);
         fireCounter -= Time.deltaTime;
         if (fireCounter <= 0)
         {
             fireCounter = fireRate;
-            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            bullet0=Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            //bullet0.GetComponent<EnemyBullet>().setDirection(vector);
+           
         }
     }
     public void hitBodyEffect()
@@ -124,6 +128,7 @@ public class EnemyController : MonoBehaviour
             int randomR = Random.Range(0, 1);
             //instanitate blood splatter
             Instantiate(deathSplatter[random], transform.position-offset, Quaternion.Euler(0f,0f,randomR*180));
+
         }
     }
 }

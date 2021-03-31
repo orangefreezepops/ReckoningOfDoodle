@@ -78,6 +78,7 @@ public class cowardEnemy : EnemyController
             Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
             bulletPosition = new Vector2(firePointPosition.x, firePointPosition.y + 1);
             Instantiate(bullet, bulletPosition, firePoint.transform.rotation);
+            bulletPosition = new Vector2(firePointPosition.x, firePointPosition.y + 1);
         }
     }
 }
