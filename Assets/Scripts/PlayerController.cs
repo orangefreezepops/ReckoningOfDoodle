@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 10f;
     public float dashDuration = 0.3f;
     public float dashCooldown = 1f;
-    private float dashCounter, dashCooldownCounter;
+    [HideInInspector]
+    public float dashCounter, dashCooldownCounter;
 
     private Vector2 moveInput;
     public Rigidbody2D RB;
@@ -55,12 +56,12 @@ public class PlayerController : MonoBehaviour
         if (mousePos.x < screenPoint.x)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            gunArm.localScale = new Vector3(-1f, -1f, 1f);
+            gunArm.localScale = new Vector3(-0.6f, -0.6f, 1f);
         }
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            gunArm.localScale = new Vector3(1f, 1f, 1f);
+            gunArm.localScale = new Vector3(0.6f, 0.6f, 1f);
         }
 
         //control shoot
