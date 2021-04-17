@@ -89,13 +89,13 @@ public class EnemyController : MonoBehaviour
     protected virtual void shoot()
     {
         GameObject bullet0;
-        //Vector3 vector = new Vector3(1, 1, 1);
+        Vector3 vector = new Vector3(1, 1, 1);
         fireCounter -= Time.deltaTime;
         if (fireCounter <= 0)
         {
             fireCounter = fireRate;
             bullet0=Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-            //bullet0.GetComponent<EnemyBullet>().setDirection(vector);
+           bullet0.GetComponent<EnemyBullet>().setDirection(vector);
            
         }
     }
