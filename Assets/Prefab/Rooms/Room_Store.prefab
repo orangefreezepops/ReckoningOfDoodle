@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 137659180139951981}
   - component: {fileID: 137659180139951987}
   m_Layer: 0
-  m_Name: Room_8
+  m_Name: Room_Store
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04c1297f4fdc24f845a984cfddbca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeDoor: 0
+  doors: []
+  enemies: []
 --- !u!50 &137659180139951987
 Rigidbody2D:
   serializedVersion: 4
@@ -145,6 +148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740141558157601838, guid: 2e1b361e621a61749896c9656f7b313f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 740141558461110648, guid: 2e1b361e621a61749896c9656f7b313f,
         type: 3}
