@@ -1,18 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class Coin : MonoBehaviour
 {
-    public static UIController Instance;
-    public Slider healthSlider;
-    public Text healthText;
-    public Text CoinText;
-    private void Awake()
-    {
-        Instance = this;
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +14,14 @@ public class UIController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            CoinController.Instance.addCoin();
+            Destroy(gameObject);
+        }
     }
 }
