@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject bulletToFire;
     public Transform firePoint;
+    public Transform firePoint2;
     public SpriteRenderer bodySR;
+    public bool doubleShoot = false;
     private void Awake()
     {
         playerInstance = this;
@@ -67,7 +69,16 @@ public class PlayerController : MonoBehaviour
         //control shoot
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(bulletToFire, firePoint.position,firePoint.rotation);
+            if (doubleShoot)
+            {
+                Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+                Instantiate(bulletToFire, firePoint2.position, firePoint2.rotation);
+            }
+            else
+            {
+                Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+            }
+           
         }
 
         if(moveInput != Vector2.zero)

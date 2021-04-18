@@ -70,6 +70,16 @@ public class HealthController : MonoBehaviour
         invincCount = duration;
         
     }
+    public void add2MaxHealth()
+    {
+        maxHealth = maxHealth + 2;
+        HealPlayer();
+        HealPlayer();
+
+        UIController.Instance.healthSlider.maxValue = maxHealth;
+        UIController.Instance.healthSlider.value = currentHealth;
+        UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+    }
 
     public void DamagePlayer()
     {
