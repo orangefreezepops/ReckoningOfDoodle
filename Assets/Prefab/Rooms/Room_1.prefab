@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04c1297f4fdc24f845a984cfddbca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeDoor: 0
+  closeDoor: 1
   doors:
   - {fileID: 4175401678080284151}
   - {fileID: 8691428015113991847}
@@ -949,6 +949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_H
       objectReference: {fileID: 0}
+    - target: {fileID: 1307365877020894486, guid: cf68a2ad7d05a2049ad913d67e0697b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf68a2ad7d05a2049ad913d67e0697b6, type: 3}
 --- !u!1 &4175401678080284151 stripped
@@ -1161,6 +1166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door_V
+      objectReference: {fileID: 0}
+    - target: {fileID: 394436099870137223, guid: 988ea498440b53948ba53c8ad4dd5e21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4330569701483850365, guid: 988ea498440b53948ba53c8ad4dd5e21,
         type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public bool closeDoor;
+    public bool closeDoor = true;
     public GameObject[] doors;
     public List<GameObject> enemies = new List<GameObject>();
     private bool roomActive;

@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04c1297f4fdc24f845a984cfddbca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeDoor: 0
+  closeDoor: 1
   doors:
   - {fileID: 7957211827828205801}
   - {fileID: 4418874024291844075}

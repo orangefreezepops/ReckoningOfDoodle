@@ -90,4 +90,14 @@ public class HealthController : MonoBehaviour
             UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
         }
     }
+
+    public void HealPlayer()
+    {
+        if(currentHealth < maxHealth)
+        {
+            currentHealth++;
+            UIController.Instance.healthSlider.value = currentHealth;
+            UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        }
+    }
 }
