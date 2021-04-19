@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
-{
-    public float speed=4f;
+public class BossBullet : MonoBehaviour
+{   public float speed;
+    public Vector3 direction;
     public bool isRotate;
     public bool isChase;
     public bool bigDamage;
-    public Vector3 direction;
     public float rotationSpeed = 60f;
-
     // Start is called before the first frame update
     void Start()
     {
         //PlayerController.playerInstance.transform.poisiton will return the position of the player
-        direction = PlayerController.playerInstance.transform.position - transform.position;
-        direction.Normalize();
+        direction = transform.right;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(isRotate)
-        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        if (isRotate)
+            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         if (isChase)
         {
             direction = direction + (PlayerController.playerInstance.transform.position - transform.position) / 500;
@@ -44,9 +41,6 @@ public class EnemyBullet : MonoBehaviour
         if(other.tag == "Player")
         {
             HealthController.Instance.DamagePlayer();
-            if (bigDamage){
-                HealthController.Instance.DamagePlayer();
-            }
         }
 
         Destroy(gameObject);
