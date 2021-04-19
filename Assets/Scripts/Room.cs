@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
     public bool closeDoor = true;
     public GameObject[] doors;
     public List<GameObject> enemies = new List<GameObject>();
-    private bool roomActive;
+    private bool active;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemies.Count > 0 && roomActive)
+        if (enemies.Count > 0 && active)
         {
             for(int i =0; i < enemies.Count; i++)
             {
@@ -50,7 +50,7 @@ public class Room : MonoBehaviour
                     door.SetActive(true);
                 }
             }
-            roomActive = true;
+            active = true;
         }
     }
 
@@ -58,7 +58,7 @@ public class Room : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            roomActive = false;
+            active = false;
         }
     }
 }

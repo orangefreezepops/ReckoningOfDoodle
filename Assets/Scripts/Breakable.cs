@@ -25,7 +25,7 @@ public class Breakable : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if (PlayerController.playerInstance.dashCounter > 0)
+            if (PlayerController.playerInstance.isDashing)
             {
               
                 float r = Random.Range(0,1f);

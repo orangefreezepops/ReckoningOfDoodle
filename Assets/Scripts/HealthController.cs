@@ -9,8 +9,9 @@ public class HealthController : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
-    private float damageInvinc = 1f;
-    private float invincCount;
+    private bool isInvinc;
+    private float invincLength= 1f;
+    private float invincTimer = 1f;
     private bool hit = false;
 
     private void Awake()
@@ -30,45 +31,42 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if hit flag is true, player is hit and enter invinc
-        if(invincCount > 0 && hit == true)
-        {
-            invincCount -= Time.deltaTime;
-
-            //make player flash
-            if( (invincCount<0.8 && invincCount > 0.6 )||(invincCount < 0.4 && invincCount > 0.2))
-            {
-                PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 0.5f);
-            }
-            else
-            {
-                PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
-            }
-
-            if(invincCount <= 0)
-            {
-                //change player alpha value to 1
-                PlayerController.playerInstance.bodySR.color = new Color(1,1,1,1f);
-                hit = false;
-            }
-        }
-        //player dash
-        else if(invincCount > 0)
-        {
-            invincCount -= Time.deltaTime;
-
-            PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 0.5f);
-            if (invincCount <= 0)
-            {
-                //change player alpha value to 1
-                PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 1f);
-            }
-        }
-    }
-    public void setDashInvinc(float duration)
-    {
-        invincCount = duration;
+        invincTimer += Time.deltaTime;
+        flashEffect();
+        if (invincTimer >= invincLength)
+        outInvic();
         
+
+    }
+    public void flashEffect()
+    {
+        //make player flash
+        if ((invincTimer < 0.8 && invincTimer > 0.6) || (invincTimer < 0.4 && invincTimer > 0.2))
+        {
+            PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 0.5f);
+        }
+        else
+        {
+            PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
+        }
+
+
+    }
+
+    public void enterInvinc()
+    {
+        //change player alpha value to 0.5
+        PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
+        invincTimer = 0;
+        isInvinc = true;
+        hit = true;
+    }
+    public void outInvic()
+    {
+      //change player alpha value to 1
+       PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 1f);
+       hit = false;
+       isInvinc = false;
     }
     public void add2MaxHealth()
     {
@@ -83,15 +81,12 @@ public class HealthController : MonoBehaviour
 
     public void DamagePlayer()
     {
-        if(invincCount <= 0)
+        if(!isInvinc)
         {
             hit = true;
             currentHealth--;
             AudioManager.instance.PlaySFX(10);
-            //change player alpha value to 0.5
-            PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
-            //reset invinc time
-            invincCount = damageInvinc;          
+            enterInvinc();
             if (currentHealth <= 0)
             {
                 PlayerController.playerInstance.gameObject.SetActive(false);
