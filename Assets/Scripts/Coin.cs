@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public AudioSource coinSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,9 @@ public class Coin : MonoBehaviour
         if (other.tag == "Player")
         {
             CoinController.Instance.addCoin();
+            coinSFX.Play();
             Destroy(gameObject);
-            AudioManager.instance.PlaySFX(5);
+            
         }
     }
 }

@@ -20,7 +20,9 @@ public class BossController : MonoBehaviour
     public Animator anim;
     public int currentHealth;
     public GameObject deathEffect;
-    
+    public AudioSource bossHit;
+    public AudioSource bossDied;
+
 
     private void Awake()
     {
@@ -116,14 +118,15 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void DamageBoss(int damageAmount)
     {
-        AudioManager.instance.PlaySFX(2);
+        bossHit.Play();
         currentHealth -= damageAmount;
         UIController.Instance.bossHealthBar.value = currentHealth;
         if (currentHealth <= 0)
         {
-            AudioManager.instance.PlaySFX(1);
+            bossDied.Play();
+            AudioManager.instance.PlayWin();
             Instantiate(deathEffect, transform.position, transform.rotation);
             gameObject.SetActive(false);
             UIController.Instance.bossHealthBar.gameObject.SetActive(false);

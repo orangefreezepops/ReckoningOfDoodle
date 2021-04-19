@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint2;
     public SpriteRenderer bodySR;
     public bool doubleShoot = false;
+
+    public AudioSource hitSFX;
+    public AudioSource shootSFX;
+    public AudioSource dashSFX;
     private void Awake()
     {
         playerInstance = this;
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
         //control shoot
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManager.instance.PlaySFX(11);
+            shootSFX.Play();
             if (doubleShoot)
             {
                 Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
@@ -93,7 +97,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space)&& dashTimer == 0 && dashCooldownTimer >= dashCooldown)
             {
-  
+                
                 enterDash();
             }
         }
@@ -114,6 +118,7 @@ public class PlayerController : MonoBehaviour
     }
     void enterDash()
     {
+        dashSFX.Play();
         anim.SetTrigger("dash");
         currentMoveSpeed = dashSpeed;
         isDashing = true;

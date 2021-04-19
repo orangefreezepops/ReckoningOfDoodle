@@ -32,7 +32,7 @@ public class PlayerBullet : MonoBehaviour
 
         if (other.tag == "Boss")
         {
-            other.GetComponent<BossController>().TakeDamage(damage);
+            other.GetComponent<BossController>().DamageBoss(damage);
         }
     }
 
