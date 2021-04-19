@@ -9,6 +9,7 @@ public class Breakable : MonoBehaviour
     public float dropCoin = 0.5f;
     public GameObject healPotion;
     public GameObject Coin;
+    public AudioSource breakSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +39,9 @@ public class Breakable : MonoBehaviour
                     Instantiate(Coin, transform.position, transform.rotation);
 
                 }
+                breakSFX.Play();
                 Destroy(gameObject);
-                AudioManager.instance.PlaySFX(0);
+              
                 int random2 = Random.Range(0, 5);
                 for (int i = 0; i < random2; i++) 
                 {
@@ -50,8 +52,8 @@ public class Breakable : MonoBehaviour
         }
         if(other.tag == "PlayerBullet")
         {
+            breakSFX.Play();
             Destroy(gameObject);
-            AudioManager.instance.PlaySFX(0);
             float r = Random.Range(0, 1f);
             if (r < dropPotion)
             {

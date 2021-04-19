@@ -19,13 +19,18 @@ public class EnemyController : MonoBehaviour
     public int health = 150;
 
     public bool shouldChase;
-    public bool shouldShoot; 
+    public bool shouldShoot;
+    private float keepDistance = 2f;
+    public float playerDistance;
+    private bool faceDirection;
 
     public GameObject bullet;
     public Transform firePoint;
-    public float fireRate = 0.3f;
+    public float fireInterval = 0.3f;
     public float rangeToFire = 4f;
-    protected float fireCounter;
+    protected float fireTimer = 0;
+    public AudioSource hitSFX;
+    public AudioSource dieSFX;
 
     //the image of the enemy
     public SpriteRenderer body;
@@ -41,10 +46,13 @@ public class EnemyController : MonoBehaviour
         //check if the enemy is being rendered
         if(body.isVisible)
         {
+            playerDistance = getPlayerDistance();
             //chase player
-            if (shouldChase && Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToChase)
+            if (shouldChase && playerDistance < rangeToChase && playerDistance > keepDistance)
             {
                 moveDirection = PlayerController.playerInstance.transform.position - transform.position;
+                if (moveDirection.x > 0) faceDirection = true;
+                else faceDirection = false;
             }
             else
             {
@@ -53,13 +61,13 @@ public class EnemyController : MonoBehaviour
 
             moveDirection.Normalize();
 
-
+            
             //change face direction 
-            if (moveDirection.x > 0)
+            if (faceDirection)
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (moveDirection.x < 0)
+            else 
             {
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
@@ -77,8 +85,8 @@ public class EnemyController : MonoBehaviour
             }
 
             //shoot
-
-            if (shouldShoot && Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position) < rangeToFire)
+            fireTimer += Time.deltaTime;
+            if (shouldShoot && playerDistance < rangeToFire && fireTimer >= fireInterval)
             {
                 shoot();
             }
@@ -86,18 +94,20 @@ public class EnemyController : MonoBehaviour
             hitBodyEffect();
         }
     }
+ 
     protected virtual void shoot()
     {
         GameObject bullet0;
         Vector3 vector = new Vector3(1, 1, 1);
-        fireCounter -= Time.deltaTime;
-        if (fireCounter <= 0)
-        {
-            fireCounter = fireRate;
-            bullet0=Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-           bullet0.GetComponent<EnemyBullet>().setDirection(vector);
-           
-        }
+         bullet0=Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+         bullet0.GetComponent<EnemyBullet>().setDirection(vector);
+        fireTimer = 0;
+
+    }
+    public float getPlayerDistance()
+    {
+        float distance = Vector3.Distance(transform.position, PlayerController.playerInstance.transform.position);
+        return distance;
     }
     public void hitBodyEffect()
     {
@@ -116,14 +126,14 @@ public class EnemyController : MonoBehaviour
 
     public void DamageEnemy(int points)
     {
-        AudioManager.instance.PlaySFX(2);
+        hitSFX.Play();
         //when hit, enemy turn red
         body.color = new Color(1, 0, 0, 1);
         Instantiate(hitEffect, transform.position, transform.rotation);
         health -= points;
         if(health <= 0)
         {
-            AudioManager.instance.PlaySFX(1);
+            dieSFX.Play();
             Destroy(gameObject);
             Vector3 offset = new Vector3(0f, 0.5f, 0f);
             int random = Random.Range(0,2);

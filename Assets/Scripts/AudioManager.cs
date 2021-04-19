@@ -5,8 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource levelMusic, gameOverMusic, winMusic, bossMusic;
-    public AudioSource[] sfx;
+    public AudioSource Music, loseMusic, winMusic, bossMusic;
     private void Awake()
     {
         instance = this;
@@ -22,26 +21,22 @@ public class AudioManager : MonoBehaviour
     {
         
     }
-    public void PlayBossMusic()
+    public void PlayBoss()
     {
-        levelMusic.Stop();
+         Music.Stop();
          bossMusic.Play();
     }
-    public void PlayGameOver()
+    public void PlayLose()
     {
-        levelMusic.Stop();
-        gameOverMusic.Play();
+        Music.Stop();
+        bossMusic.Stop();
+        loseMusic.Play();
     }
 
     public void PlayWin()
     {
-        levelMusic.Stop();
+        Music.Stop();
         winMusic.Play();
     }
 
-    public void PlaySFX(int sfxToPlay)
-    {
-        sfx[sfxToPlay].Stop();
-        sfx[sfxToPlay].Play();
-    }
 }

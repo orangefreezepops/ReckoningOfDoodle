@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealPotion : MonoBehaviour
 {
+    public AudioSource potionSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class HealPotion : MonoBehaviour
         if (other.tag == "Player")
         {
             HealthController.Instance.HealPlayer();
-            AudioManager.instance.PlaySFX(6);
+            potionSFX.Play();
             Destroy(gameObject);
         }
     }

@@ -22,7 +22,7 @@ public class BossSpawn : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            AudioManager.instance.PlayBossMusic();
+            AudioManager.instance.PlayBoss();
             Instantiate(boss, bossLocation.position, bossLocation.rotation);
             Destroy(gameObject);
         }
