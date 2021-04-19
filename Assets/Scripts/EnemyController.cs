@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Rigidbody2D RB;
-    public float moveSpeed = 3f;
+    public float moveSpeed;
     public float rangeToChase = 5f;
     protected Vector3 moveDirection;
 
@@ -116,12 +116,14 @@ public class EnemyController : MonoBehaviour
 
     public void DamageEnemy(int points)
     {
+        AudioManager.instance.PlaySFX(2);
         //when hit, enemy turn red
         body.color = new Color(1, 0, 0, 1);
         Instantiate(hitEffect, transform.position, transform.rotation);
         health -= points;
         if(health <= 0)
         {
+            AudioManager.instance.PlaySFX(1);
             Destroy(gameObject);
             Vector3 offset = new Vector3(0f, 0.5f, 0f);
             int random = Random.Range(0,2);

@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         if (isChase)
         {
-            direction = direction + (PlayerController.playerInstance.transform.position - transform.position) / 500;
+            direction += (PlayerController.playerInstance.transform.position - transform.position) / 500;
             direction.Normalize();
         }
         transform.position += direction * speed * Time.deltaTime;

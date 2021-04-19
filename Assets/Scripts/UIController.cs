@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
     public Text healthText;
     public Text CoinText;
     public Slider bossHealthBar;
+    public GameObject deathScreen;
+    public GameObject winScreen;
     private void Awake()
     {
         Instance = this;

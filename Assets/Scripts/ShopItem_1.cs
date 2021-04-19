@@ -22,6 +22,7 @@ public class ShopItem_1 : MonoBehaviour
             {
                 if (CoinController.Instance.CoinNumber >= price)
                 {
+                    AudioManager.instance.PlaySFX(17);
                     CoinController.Instance.loseCoin(price);
                     HealthController.Instance.add2MaxHealth();
                     Destroy(gameObject);

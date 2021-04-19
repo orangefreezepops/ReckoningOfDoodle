@@ -12,6 +12,7 @@ public class BrokenPieces : MonoBehaviour
     public float lifetime = 3f;
 
     public float fadeSpeed = 2.5f;
+    private float time = 3.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,12 @@ public class BrokenPieces : MonoBehaviour
         transform.position += moveDirection * Time.deltaTime;
 
         moveDirection = Vector3.Lerp(moveDirection, Vector3.zero, deceleration * Time.deltaTime);
+
+        time -= Time.deltaTime;
+        if(time <= 0)
+        {
+            Destroy(gameObject);
+        }
 
 
     }

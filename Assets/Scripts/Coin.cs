@@ -22,6 +22,7 @@ public class Coin : MonoBehaviour
         {
             CoinController.Instance.addCoin();
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX(5);
         }
     }
 }

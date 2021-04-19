@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         //control shoot
         if (Input.GetMouseButtonDown(0))
         {
+            AudioManager.instance.PlaySFX(11);
             if (doubleShoot)
             {
                 Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
             activeMoveSpeed = dashSpeed;
             dashCounter = dashDuration;
             anim.SetTrigger("dash");
+            AudioManager.instance.PlaySFX(7);
             HealthController.Instance.setDashInvinc(dashDuration);
         }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 711486164672119015}
   - component: {fileID: 711486164672119008}
   - component: {fileID: 711486164672119009}
-  - component: {fileID: 711486164672119010}
+  - component: {fileID: 2151909161987261386}
   m_Layer: 10
   m_Name: Enemy_witch
   m_TagString: Enemy
@@ -82,7 +82,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &711486164672119010
+--- !u!114 &2151909161987261386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,23 +91,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 711486164672119011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f866d03f8dfbc43990854a2c57bc1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8185da38ebca89e4ba582da3046cfb9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 711486164672119009}
-  moveSpeed: 3
+  moveSpeed: 0.5
   rangeToChase: 5
-  deathSplatter: []
+  deathSplatter:
+  - {fileID: 3025362870421437970, guid: d398f108d9e590d46b0b0bba7f440d27, type: 3}
+  - {fileID: 8892696890510741993, guid: aa645e944e12eed44ba13e8003fec477, type: 3}
+  - {fileID: 4329298353719938573, guid: a6e70856536539240b38b73f89eda935, type: 3}
   hitEffect: {fileID: 6820625935822169404, guid: 98f22191289ff464f856e1363fb28d8b,
     type: 3}
   anim: {fileID: 711486166019954632}
   health: 150
   shouldChase: 1
   shouldShoot: 1
-  bullet: {fileID: 1588158598281684511, guid: 8cfa35aa4a94ea74a8ee11cd3b58f963, type: 3}
+  bullet: {fileID: 5444527917271933864, guid: ceeed523fa6ed574b8ea6d662422475c, type: 3}
   firePoint: {fileID: 711486165089009712}
-  fireRate: 0.3
-  rangeToFire: 4
+  fireRate: 0.8
+  rangeToFire: 5
   body: {fileID: 711486166019954633}
 --- !u!1 &711486165089009713
 GameObject:

@@ -129,8 +129,8 @@ MonoBehaviour:
   - {fileID: 1164096461298572511, guid: 460c1a25cd0eb084b9f53062ea81a1c1, type: 3}
   - {fileID: 7110488110526288513, guid: d3bc71ecbdb45574ab88490a95dce6b0, type: 3}
   - {fileID: 6661634996078065739, guid: bb0e167357bd18e4f867f2467a6320f3, type: 3}
-  dropPotion: 0.2
-  dropCoin: 0.5
+  dropPotion: 0.1
+  dropCoin: 0.7
   healPotion: {fileID: 7940613073727447106, guid: 681d51d235a6193458bb0e86df51abfd,
     type: 3}
   Coin: {fileID: 7006754131595424404, guid: 18b9ba9d9355c024d865c0c4d3b1a3b4, type: 3}

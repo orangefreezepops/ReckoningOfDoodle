@@ -87,6 +87,7 @@ public class HealthController : MonoBehaviour
         {
             hit = true;
             currentHealth--;
+            AudioManager.instance.PlaySFX(10);
             //change player alpha value to 0.5
             PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
             //reset invinc time
@@ -94,6 +95,9 @@ public class HealthController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 PlayerController.playerInstance.gameObject.SetActive(false);
+                UIController.Instance.deathScreen.gameObject.SetActive(true);
+                AudioManager.instance.PlaySFX(8);
+                AudioManager.instance.PlayGameOver();
             }
 
             UIController.Instance.healthSlider.value = currentHealth;

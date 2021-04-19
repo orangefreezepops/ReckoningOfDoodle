@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 8330888400043329588}
   moveSpeed: 3
-  rangeToChase: 7
+  rangeToChase: 5
   deathSplatter:
   - {fileID: 4329298353719938573, guid: a6e70856536539240b38b73f89eda935, type: 3}
   - {fileID: 8892696890510741993, guid: aa645e944e12eed44ba13e8003fec477, type: 3}

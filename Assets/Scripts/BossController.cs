@@ -118,13 +118,17 @@ public class BossController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        AudioManager.instance.PlaySFX(2);
         currentHealth -= damageAmount;
         UIController.Instance.bossHealthBar.value = currentHealth;
         if (currentHealth <= 0)
         {
+            AudioManager.instance.PlaySFX(1);
             Instantiate(deathEffect, transform.position, transform.rotation);
             gameObject.SetActive(false);
             UIController.Instance.bossHealthBar.gameObject.SetActive(false);
+            UIController.Instance.winScreen.gameObject.SetActive(true);
+            AudioManager.instance.PlayWin();
         }
         
     }

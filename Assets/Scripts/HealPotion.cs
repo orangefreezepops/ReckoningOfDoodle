@@ -21,6 +21,7 @@ public class HealPotion : MonoBehaviour
         if (other.tag == "Player")
         {
             HealthController.Instance.HealPlayer();
+            AudioManager.instance.PlaySFX(6);
             Destroy(gameObject);
         }
     }

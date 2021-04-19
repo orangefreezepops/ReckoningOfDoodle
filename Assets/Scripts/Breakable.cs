@@ -39,6 +39,7 @@ public class Breakable : MonoBehaviour
 
                 }
                 Destroy(gameObject);
+                AudioManager.instance.PlaySFX(0);
                 int random2 = Random.Range(0, 5);
                 for (int i = 0; i < random2; i++) 
                 {
@@ -50,6 +51,7 @@ public class Breakable : MonoBehaviour
         if(other.tag == "PlayerBullet")
         {
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX(0);
             float r = Random.Range(0, 1f);
             if (r < dropPotion)
             {
