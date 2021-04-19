@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Breakable : MonoBehaviour
+public class Box : MonoBehaviour
 {
     public GameObject[] broken;
     public float dropPotion = 0.1f;

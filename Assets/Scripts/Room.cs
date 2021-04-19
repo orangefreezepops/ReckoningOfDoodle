@@ -4,37 +4,50 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public bool closeDoor = true;
+    public bool close = false;
     public GameObject[] doors;
     public List<GameObject> enemies = new List<GameObject>();
     private bool active;
     // Start is called before the first frame update
     void Start()
     {
-        
+        active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemies.Count > 0 && active)
+        if (active)
         {
-            for(int i =0; i < enemies.Count; i++)
+            if (!enemyExist())
             {
-                if(enemies[i] == null)
-                {
-                    enemies.RemoveAt(i);
-                    i--;
-                }
+                openDoor();
+            }
+        }
+    }
+    private bool enemyExist()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] != null)
+                return true;
 
-            }
-            if(enemies.Count == 0)
-            {
-                foreach (GameObject door in doors)
-                {
-                    door.SetActive(false);
-                }
-            }
+        }
+        return false;
+    }
+    private void closeDoor()
+    {
+      
+        for(int i =0; i< doors.Length; i++)
+        {
+            doors[i].SetActive(true);
+        }
+    }
+    private void openDoor()
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,12 +56,9 @@ public class Room : MonoBehaviour
         {
             CameraController.instance.ChangeTarget(transform);
 
-            if (closeDoor && enemies.Count > 0)
+            if (close && enemyExist())
             {
-                foreach(GameObject door in doors)
-                {
-                    door.SetActive(true);
-                }
+                closeDoor();
             }
             active = true;
         }
