@@ -7,6 +7,7 @@ public class ShopItem_0 : MonoBehaviour
     public GameObject buyMessage;
     private bool isInZone = false;
     private int price = 5;
+    public AudioSource buySFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class ShopItem_0 : MonoBehaviour
             {
                 if (CoinController.Instance.CoinNumber >= price)
                 {
-                    AudioManager.instance.PlaySFX(17);
+                    buySFX.Play();
                     CoinController.Instance.loseCoin(price);
                     HealthController.Instance.HealPlayer();
                     HealthController.Instance.HealPlayer();
