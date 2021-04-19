@@ -4795,31 +4795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bc18dd00114134d9822129def7d412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMusic: {fileID: 367827675}
-  gameOverMusic: {fileID: 887067730}
+  Music: {fileID: 0}
+  loseMusic: {fileID: 0}
   winMusic: {fileID: 499124913}
   bossMusic: {fileID: 1329638823}
-  sfx:
-  - {fileID: 400569929}
-  - {fileID: 538071482}
-  - {fileID: 822596318}
-  - {fileID: 441126535}
-  - {fileID: 1962373858}
-  - {fileID: 257915114}
-  - {fileID: 1581390343}
-  - {fileID: 525638326}
-  - {fileID: 758564918}
-  - {fileID: 2109828200}
-  - {fileID: 1182148342}
-  - {fileID: 648439524}
-  - {fileID: 1672220344}
-  - {fileID: 1848297563}
-  - {fileID: 138258703}
-  - {fileID: 912778473}
-  - {fileID: 1618155685}
-  - {fileID: 429121838}
-  - {fileID: 315450251}
-  - {fileID: 390698619}
 --- !u!4 &601219214
 Transform:
   m_ObjectHideFlags: 0
@@ -5706,6 +5685,9 @@ MonoBehaviour:
   firePoint2: {fileID: 1017035768}
   bodySR: {fileID: 1734930218}
   doubleShoot: 0
+  hitSFX: {fileID: 0}
+  shootSFX: {fileID: 0}
+  dashSFX: {fileID: 0}
 --- !u!4 &698128695
 Transform:
   m_ObjectHideFlags: 0
@@ -8283,6 +8265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 30
   target: {fileID: 0}
+  isfollow: 0
 --- !u!1 &1145602013
 GameObject:
   m_ObjectHideFlags: 0
