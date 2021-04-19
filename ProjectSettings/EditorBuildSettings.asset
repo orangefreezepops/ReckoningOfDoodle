@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d3ce7cefdb21f4e398691c68fb59e830
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: ac76e666616efe8458d93442c7cfd73d
+    path: Assets/Scenes/Zhzy_Test.unity
+    guid: d8e9ec4d20026c440a88235288a9eacc
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
