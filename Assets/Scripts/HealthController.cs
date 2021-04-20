@@ -12,7 +12,6 @@ public class HealthController : MonoBehaviour
     private bool isInvinc;
     private float invincLength= 1f;
     private float invincTimer = 1f;
-    private bool hit = false;
 
     private void Awake()
     {
@@ -24,8 +23,7 @@ public class HealthController : MonoBehaviour
         currentHealth = maxHealth;
 
         UIController.Instance.healthSlider.maxValue = maxHealth;
-        UIController.Instance.healthSlider.value = currentHealth;
-        UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        updateValue();
     }
 
     // Update is called once per frame
@@ -59,13 +57,11 @@ public class HealthController : MonoBehaviour
         PlayerController.playerInstance.bodySR.color = new Color(1, 0, 0, 0.5f);
         invincTimer = 0;
         isInvinc = true;
-        hit = true;
     }
     public void outInvic()
     {
       //change player alpha value to 1
        PlayerController.playerInstance.bodySR.color = new Color(1, 1, 1, 1f);
-       hit = false;
        isInvinc = false;
     }
     public void add2MaxHealth()
@@ -75,16 +71,15 @@ public class HealthController : MonoBehaviour
         HealPlayer();
 
         UIController.Instance.healthSlider.maxValue = maxHealth;
-        UIController.Instance.healthSlider.value = currentHealth;
-        UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        updateValue();
     }
 
     public void DamagePlayer()
     {
         if(!isInvinc)
         {
-            hit = true;
             currentHealth--;
+            CameraController.instance.Shake();
             enterInvinc();
             if (currentHealth <= 0)
             {
@@ -92,9 +87,7 @@ public class HealthController : MonoBehaviour
                 UIController.Instance.deathScreen.gameObject.SetActive(true);
                 AudioManager.instance.PlayLose();
             }
-
-            UIController.Instance.healthSlider.value = currentHealth;
-            UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+            updateValue();
         }
     }
 
@@ -103,8 +96,12 @@ public class HealthController : MonoBehaviour
         if(currentHealth < maxHealth)
         {
             currentHealth++;
-            UIController.Instance.healthSlider.value = currentHealth;
-            UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+            updateValue();
         }
+    }
+    public void updateValue()
+    {
+        UIController.Instance.healthSlider.value = currentHealth;
+        UIController.Instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
 }

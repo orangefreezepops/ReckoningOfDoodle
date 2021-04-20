@@ -233,14 +233,14 @@ MonoBehaviour:
   hitEffect: {fileID: 6820625935822169404, guid: 98f22191289ff464f856e1363fb28d8b,
     type: 3}
   anim: {fileID: 711486166019954632}
-  health: 150
+  health: 500
   shouldChase: 1
   shouldShoot: 1
   playerDistance: 0
   bullet: {fileID: 5444527917271933864, guid: ceeed523fa6ed574b8ea6d662422475c, type: 3}
   firePoint: {fileID: 711486165089009712}
-  fireInterval: 1.5
-  rangeToFire: 5
+  fireInterval: 1
+  rangeToFire: 7
   hitSFX: {fileID: 5171031414254835313}
   dieSFX: {fileID: 6242955374128481874}
   body: {fileID: 711486166019954633}

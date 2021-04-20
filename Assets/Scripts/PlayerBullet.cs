@@ -5,24 +5,24 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 7.5f;
-    public Rigidbody2D RB;
-    public GameObject impactEffect;
+    public GameObject Effect;
     public int damage = 50;
+    public Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
-        
+        direction = transform.right;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RB.velocity = transform.right*speed;
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(impactEffect, transform.position, transform.rotation);
+        Instantiate(Effect, transform.position, transform.rotation);
         Destroy(gameObject);
 
         if(other.tag == "Enemy")

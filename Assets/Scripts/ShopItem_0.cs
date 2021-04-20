@@ -17,20 +17,16 @@ public class ShopItem_0 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInZone)
+        if (isInZone && Input.GetKeyDown(KeyCode.E)&& CoinController.Instance.CoinNumber >= price)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (CoinController.Instance.CoinNumber >= price)
-                {
-                    buySFX.Play();
-                    CoinController.Instance.loseCoin(price);
-                    HealthController.Instance.HealPlayer();
-                    HealthController.Instance.HealPlayer();
-                    HealthController.Instance.HealPlayer();
-                    Destroy(gameObject);
-                }
-            }
+            
+            buySFX.Play();
+            CoinController.Instance.loseCoin(price);
+            HealthController.Instance.HealPlayer();
+            HealthController.Instance.HealPlayer();
+            HealthController.Instance.HealPlayer();
+            Destroy(gameObject);
+
         }
     }
 
