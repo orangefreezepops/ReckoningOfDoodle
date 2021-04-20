@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: -2920302936249799813
     second: Enemy_coward
+  - first:
+      213: -1204035540374746876
+    second: Witch
+  - first:
+      213: -3590015874963573982
+    second: 0x72_16x16DungeonTileset.v3_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,7 +188,7 @@ TextureImporter:
         width: 12
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,6 +196,48 @@ TextureImporter:
       bones: []
       spriteID: b7bec40b3fff877d0800000000000000
       internalID: -2920302936249799813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Witch
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 95
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40984072e086a4fe0800000000000000
+      internalID: -1204035540374746876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_16x16DungeonTileset.v3_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 47
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22378ca1593bd2ec0800000000000000
+      internalID: -3590015874963573982
       vertices: []
       indices: 
       edges: []

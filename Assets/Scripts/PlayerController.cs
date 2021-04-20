@@ -7,11 +7,17 @@ public class PlayerController : MonoBehaviour
     public static PlayerController playerInstance;
 
     public float moveSpeed;
-    private float activeMoveSpeed;//this move speed change when dash
+    private float currentMoveSpeed;//this move speed change when dash
+
+    private bool faceDirection;
+
+    private bool canDash;
+    public bool isDashing = false;
     public float dashSpeed = 10f;
     public float dashDuration = 0.3f;
     public float dashCooldown = 1f;
-    private float dashCounter, dashCooldownCounter;
+    public float dashTimer=0;
+    public float dashCooldownTimer=1f;
 
     private Vector2 moveInput;
     public Rigidbody2D RB;
@@ -20,7 +26,13 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject bulletToFire;
     public Transform firePoint;
+    public Transform firePoint2;
     public SpriteRenderer bodySR;
+    public bool doubleShoot = false;
+
+    public AudioSource hitSFX;
+    public AudioSource shootSFX;
+    public AudioSource dashSFX;
     private void Awake()
     {
         playerInstance = this;
@@ -29,8 +41,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         theCam = Camera.main;
-        activeMoveSpeed = moveSpeed;
-        dashCooldownCounter = -1;
+        currentMoveSpeed = moveSpeed;
+        canDash = true;
     }
 
     // Update is called once per frame
@@ -40,33 +52,35 @@ public class PlayerController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         //control movement
-        //transform.position += new Vector3(moveInput.x*Time.deltaTime*moveSpeed, moveInput.y * Time.deltaTime*moveSpeed, 0f);
         moveInput.Normalize();
-        RB.velocity = moveInput * activeMoveSpeed;
 
-        //control Aim
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);
-
-        //if the mouse to the left of the player. set player to look left
-        Vector2 offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
-        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+        float angle = getGunRotation();
         gunArm.rotation = Quaternion.Euler(0, 0, angle);
-        if (mousePos.x < screenPoint.x)
+        if(faceDirection)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            gunArm.localScale = new Vector3(-1f, -1f, 1f);
+            gunArm.localScale = new Vector3(-0.6f, -0.6f, 1f);
         }
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            gunArm.localScale = new Vector3(1f, 1f, 1f);
+            gunArm.localScale = new Vector3(0.6f, 0.6f, 1f);
         }
 
         //control shoot
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(bulletToFire, firePoint.position,firePoint.rotation);
+            shootSFX.Play();
+            if (doubleShoot)
+            {
+                Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+                Instantiate(bulletToFire, firePoint2.position, firePoint2.rotation);
+            }
+            else
+            {
+                Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+            }
+           
         }
 
         if(moveInput != Vector2.zero)
@@ -78,38 +92,54 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isMoving", false);
         }
 
-        //control dash
-
-        if (Input.GetKeyDown(KeyCode.Space) && dashCooldownCounter == -1)
+        dashCooldownTimer += Time.deltaTime;
+        if (canDash)
         {
-            activeMoveSpeed = dashSpeed;
-            dashCounter = dashDuration;
-            anim.SetTrigger("dash");
-            HealthController.Instance.setDashInvinc(dashDuration);
-        }
-
-        if (dashCounter > 0)
-        {
-            dashCounter -= Time.deltaTime;
-            if (dashCounter <= 0)
+            if (Input.GetKeyDown(KeyCode.Space)&& dashTimer == 0 && dashCooldownTimer >= dashCooldown)
             {
-                activeMoveSpeed = moveSpeed;
-                dashCooldownCounter = dashCooldown;
+                
+                enterDash();
             }
         }
 
-        if (dashCooldownCounter > 0)
+        if (isDashing)
         {
-            dashCooldownCounter -= Time.deltaTime;
-            if(dashCooldownCounter <= 0)
-            {
-                dashCooldownCounter = -1;
-            }
+            dashTimer += Time.deltaTime;
         }
-
-
-
-
+        if (dashTimer >= dashDuration) enterWalk();
+        if (dashCooldownTimer >= dashCooldown) canDash = true;
+        RB.velocity = moveInput * currentMoveSpeed;
+    }
+    void enterWalk()
+    {
+        currentMoveSpeed = moveSpeed;
+        dashTimer = 0;
+        isDashing = false;
+    }
+    void enterDash()
+    {
+        dashSFX.Play();
+        anim.SetTrigger("dash");
+        currentMoveSpeed = dashSpeed;
+        isDashing = true;
+        canDash = false;
+        dashCooldownTimer = 0;
 
     }
+    float getGunRotation()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.localPosition);
+        if (mousePosition.x < playerPosition.x) faceDirection = true;
+        else faceDirection = false;
+        return getAngle(mousePosition, playerPosition);
+    }
+
+    float getAngle(Vector3 v1, Vector3 v2)
+    {
+        return Mathf.Atan2(v1.y - v2.y, v1.x - v2.x) * Mathf.Rad2Deg;
+    }
+
+
 }
+
