@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4590871428994030224}
   - component: {fileID: 1490229926015982682}
   - component: {fileID: 1766647963}
-  - component: {fileID: 1766647964}
   m_Layer: 8
   m_Name: Breakable_5
   m_TagString: Untagged
@@ -70,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 67266059
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2796105001415810770, guid: b1e514ee9c00f0c458e99f588dfa4cb0,
     type: 3}
@@ -97,10 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d845e754ae1504d985ef04073a8750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
   deceleration: 5
-  lifetime: 3
-  fadeSpeed: 2.5
 --- !u!50 &1766647963
 Rigidbody2D:
   serializedVersion: 4
@@ -122,29 +118,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1766647964
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7110488110526288513}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5625, y: 0.4375}
-    newSize: {x: 0.5625, y: 0.4375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5625, y: 0.4375}
-  m_EdgeRadius: 0

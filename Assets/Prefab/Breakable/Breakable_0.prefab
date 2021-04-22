@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 67266059
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4098156409588004937, guid: b1e514ee9c00f0c458e99f588dfa4cb0,
     type: 3}
@@ -129,3 +129,5 @@ MonoBehaviour:
   - {fileID: 1164096461298572511, guid: 460c1a25cd0eb084b9f53062ea81a1c1, type: 3}
   - {fileID: 7110488110526288513, guid: d3bc71ecbdb45574ab88490a95dce6b0, type: 3}
   - {fileID: 6661634996078065739, guid: bb0e167357bd18e4f867f2467a6320f3, type: 3}
+  dropPotion: 0.5
+  healPotion: {fileID: 0}

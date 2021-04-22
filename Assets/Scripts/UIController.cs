@@ -8,6 +8,10 @@ public class UIController : MonoBehaviour
     public static UIController Instance;
     public Slider healthSlider;
     public Text healthText;
+    public Text CoinText;
+    public Slider bossHealthBar;
+    public GameObject deathScreen;
+    public GameObject winScreen;
     private void Awake()
     {
         Instance = this;

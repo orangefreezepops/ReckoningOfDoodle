@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - PlayerBullet
+  - Item
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Enemies
   - EnemyBullet
   - IgnorBullet
-  - 
-  - 
+  - ground
+  - item
   - 
   - 
   - 
@@ -43,12 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ground
+    uniqueID: 2141082701
+    locked: 0
+  - name: item
+    uniqueID: 67266059
+    locked: 0
+  - name: Monster
+    uniqueID: 2679541233
+    locked: 0
   - name: Player
     uniqueID: 1032633151
     locked: 0
   - name: Bullet
     uniqueID: 3271326389
-    locked: 0
-  - name: ground
-    uniqueID: 2141082701
     locked: 0
